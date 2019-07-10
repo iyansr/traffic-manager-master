@@ -127,7 +127,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Text('Time : '),
-                // date format input field
+                // time format input field
                 Container(
                   margin: EdgeInsets.only(top: 8.0, bottom: 40.0),
                   child: TimePickerWidget(
