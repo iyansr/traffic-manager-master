@@ -10,9 +10,11 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+// const now = DateTime.now();
+
 const String MIN_DATETIME = '2010-05-12';
 const String MAX_DATETIME = '2021-11-25';
-const String INIT_DATETIME = '2019-05-17';
+const String INIT_DATETIME = '2021-11-25';
 const String DATE_FORMAT = 'dd|MMM,yyyy';
 
 const String MIN_TIME = '2010-05-12 00:01:10';
@@ -21,6 +23,8 @@ const String INIT_TIME = '2019-05-17 18:13:15';
 const String TIME_FORMAT = 'HH:mm';
 
 class _HomeState extends State<Home> {
+  TextEditingController sureyorController;
+
   DateTime _dateTime;
 
   @override
@@ -39,6 +43,7 @@ class _HomeState extends State<Home> {
 
   TextField textField({String labelText}) {
     return TextField(
+      controller: sureyorController,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: labelText,
@@ -163,7 +168,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return CounterPage();
+                        return CounterPage(addCard: dropdownValue);
                       }));
                     },
                     child: Icon(

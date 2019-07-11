@@ -5,6 +5,8 @@ import 'package:traffic_manager/widget/counterCard.dart';
 // import 'counterpage.dart';
 
 class CounterPage extends StatefulWidget {
+  int addCard;
+  CounterPage({this.addCard});
   @override
   _CounterPageState createState() => _CounterPageState();
 }
@@ -126,7 +128,7 @@ class _CounterPageState extends State<CounterPage> {
                           ),
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.pause),
+                            icon: Icon(Icons.stop),
                           ),
                         ],
                       )
@@ -135,7 +137,7 @@ class _CounterPageState extends State<CounterPage> {
                 ],
               ),
             ),
-            CounterCard()
+            CounterCard(addcard: widget.addCard)
           ],
         ),
       ],
