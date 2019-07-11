@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
+
+import 'counterpage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -22,6 +26,12 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    // Set portrait orientation
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+
     _dateTime = DateTime.parse(INIT_DATETIME);
   }
 
@@ -150,7 +160,12 @@ class _HomeState extends State<Home> {
 
                 ButtonTheme(
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return CounterPage();
+                      }));
+                    },
                     child: Icon(
                       Icons.check,
                       size: 50.0,
