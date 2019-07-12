@@ -1,31 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
-
-import 'counterpage.dart';
+import 'package:traffic_manager/counterpage.dart';
+import 'package:traffic_manager/widget/dateWidget.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-DateTime _dateTime;
-var date = DateTime.now();
-var month = date.month < 10 ? '0${date.month}' : '${date.month}';
-
-String minDate = '2010-05-12';
-String maxDate = '2021-11-25';
-String initDate = '${date.year}-$month-${date.day}';
-String dateFormat = 'dd|MM,yyyy';
-
-String minTime = '2010-05-12 00:01:10';
-String maxTime = '2021-11-25 23:59:10';
-String initTime = '$date';
-String timeFormat = 'HH:mm';
-
 class _HomeState extends State<Home> {
-  TextEditingController sureyorController;
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -36,36 +19,26 @@ class _HomeState extends State<Home> {
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
-
-    _dateTime = DateTime.parse(initDate);
   }
 
+  String surveyor, location, condition;
   int dropdownValue = 1;
 
   void fungsiFormValidator() {
-    setState(() {
-      if (_formKey.currentState.validate()) {
-        // If the form is valid, display a Snackbar.
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return CounterPage(addCard: dropdownValue);
-        }));
-      }
-    });
-  }
+    // setState(() {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      // If the form is valid, go to next page.
 
-  TextFormField textField({String labelText}) {
-    return TextFormField(
-      controller: sureyorController,
-      validator: (String value) {
-        if (value.isEmpty) {
-          return 'Form Tidak Boleh Kosong';
-        }
-      },
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: labelText,
-      ),
-    );
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return CounterPage(addCard: dropdownValue);
+      }));
+      //print textFormField value
+      print('Surveyor: $surveyor');
+      print('Location: $location');
+      print('Condition: $condition');
+    }
+    // });
   }
 
   String dateText = 'Select Date';
@@ -80,8 +53,14 @@ class _HomeState extends State<Home> {
           'Traffic Manager',
           style: TextStyle(color: Colors.black),
         ),
-        centerTitle: true,
         backgroundColor: Colors.white,
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.more_vert),
+            color: Colors.black,
+          )
+        ],
       ),
       body: ListView(
         children: <Widget>[
@@ -93,17 +72,53 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(height: 20.0),
-                  textField(labelText: 'Surveyor'),
+                  TextFormField(
+                    onSaved: (values) => surveyor = values,
+                    // controller: controller,
+                    validator: (String value) {
+                      if (value.isEmpty) {
+                        return 'Form Tidak Boleh Kosong';
+                      }
+                    },
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Surveyor',
+                    ),
+                  ),
 
                   SizedBox(height: 20.0),
-                  textField(labelText: 'Location'),
+                  TextFormField(
+                    onSaved: (values) => location = values,
+                    // controller: controller,
+                    validator: (String value) {
+                      if (value.isEmpty) {
+                        return 'Form Tidak Boleh Kosong';
+                      }
+                    },
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Location',
+                    ),
+                  ),
 
                   SizedBox(height: 20.0),
                   Row(
                     children: <Widget>[
                       Expanded(
                         flex: 4,
-                        child: textField(labelText: 'Condition'),
+                        child: TextFormField(
+                          onSaved: (values) => condition = values,
+                          // controller: controller,
+                          validator: (String value) {
+                            if (value.isEmpty) {
+                              return 'Form Tidak Boleh Kosong';
+                            }
+                          },
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Condition',
+                          ),
+                        ),
                       ),
                       SizedBox(width: 10.0),
                       Expanded(
@@ -133,51 +148,7 @@ class _HomeState extends State<Home> {
                   SizedBox(height: 20.0),
 
                   // date picker widget
-                  Text('Date : '),
-                  Container(
-                    margin: EdgeInsets.only(top: 24.0, bottom: 40.0),
-                    child: DatePickerWidget(
-                      minDateTime: DateTime.parse(minDate),
-                      maxDateTime: DateTime.parse(maxDate),
-                      initialDateTime: DateTime.parse(initDate),
-                      dateFormat: dateFormat,
-                      pickerTheme: DateTimePickerTheme(
-                        showTitle: false,
-                        backgroundColor: Colors.white,
-                        cancelTextStyle: TextStyle(color: Colors.grey),
-                        confirmTextStyle: TextStyle(color: Colors.black),
-                        itemTextStyle: TextStyle(color: Colors.black),
-                        pickerHeight: 150.0,
-                        itemHeight: 30.0,
-                      ),
-                      onChange: (dateTime, selectedIndex) {
-                        setState(() {
-                          _dateTime = dateTime;
-                        });
-                      },
-                    ),
-                  ),
-                  Text('Time : '),
-                  // time format input field
-                  Container(
-                    margin: EdgeInsets.only(top: 8.0, bottom: 40.0),
-                    child: TimePickerWidget(
-                      minDateTime: DateTime.parse(minTime),
-                      maxDateTime: DateTime.parse(maxTime),
-                      initDateTime: DateTime.parse(initTime),
-                      dateFormat: timeFormat,
-                      pickerTheme: DateTimePickerTheme(
-                        pickerHeight: 150.0,
-                        showTitle: false,
-                        backgroundColor: Colors.white,
-                      ),
-                      onChange: (dateTime, selectedIndex) {
-                        setState(() {
-                          _dateTime = dateTime;
-                        });
-                      },
-                    ),
-                  ),
+                  DateWidget(),
 
                   ButtonTheme(
                     child: FlatButton(

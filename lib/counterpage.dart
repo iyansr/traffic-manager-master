@@ -37,11 +37,13 @@ class _CounterPageState extends State<CounterPage> {
     setState(() {
       value1 = val1;
     });
+    print('Check1');
   }
 
   void switchOnChange2(bool val2) {
     setState(() {
       value2 = val2;
+      print('Check2');
     });
   }
 
@@ -75,7 +77,7 @@ class _CounterPageState extends State<CounterPage> {
           scale: 0.9,
           child: Checkbox(
             value: values,
-            onChanged: switchOnChange2,
+            onChanged: (e) => switchOnChange2(e),
             activeColor: Colors.blue,
           ),
         ),

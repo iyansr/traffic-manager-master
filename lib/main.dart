@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:traffic_manager/home.dart';
 
 void main() => runApp(TrfManager());
 

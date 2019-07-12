@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'cardList.dart';
+import 'package:traffic_manager/widget/cardList.dart';
 
 class CounterCard extends StatefulWidget {
   int addcard;
