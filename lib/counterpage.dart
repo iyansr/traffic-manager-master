@@ -21,6 +21,15 @@ class _CounterPageState extends State<CounterPage> {
     ]);
   }
 
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+    super.dispose();
+  }
+
   bool value1 = false;
   bool value2 = false;
 

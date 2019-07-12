@@ -103,17 +103,7 @@ class _HomeState extends State<Home> {
                     children: <Widget>[
                       Expanded(
                         flex: 4,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Condition'),
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Form Harus Diisi';
-                            }
-                            return null;
-                          },
-                        ),
+                        child: textField(labelText: 'Condition'),
                       ),
                       SizedBox(width: 10.0),
                       Expanded(
