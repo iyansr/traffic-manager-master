@@ -11,11 +11,11 @@ class CounterCard extends StatefulWidget {
 class _CounterCardState extends State<CounterCard> {
   List<CardList> cardlist = [
     CardList(counter: 0, counterName: 'Counter 1'),
-    CardList(counter: 0, counterName: 'Counter 1'),
-    CardList(counter: 0, counterName: 'Counter 1'),
-    CardList(counter: 0, counterName: 'Counter 1'),
-    CardList(counter: 0, counterName: 'Counter 1'),
-    CardList(counter: 0, counterName: 'Counter 1'),
+    CardList(counter: 0, counterName: 'Counter 2'),
+    CardList(counter: 0, counterName: 'Counter 3'),
+    CardList(counter: 0, counterName: 'Counter 4'),
+    CardList(counter: 0, counterName: 'Counter 5'),
+    CardList(counter: 0, counterName: 'Counter 6'),
   ];
 
   List<CardList> displayCard = [];
@@ -27,9 +27,6 @@ class _CounterCardState extends State<CounterCard> {
     }
   }
 
-// void card(){
-//   displayCard.map(cardlist).toList();
-// }
   @override
   void initState() {
     super.initState();

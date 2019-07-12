@@ -12,6 +12,7 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
+  @override
   void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations([
