@@ -155,7 +155,7 @@ class _HomeState extends State<Home> {
                         dropdownValue = newValue;
                       });
                     },
-                    items: <int>[1, 2, 3, 5, 6]
+                    items: <int>[1, 2, 3, 4, 5, 6]
                         .map<DropdownMenuItem<int>>((int value) {
                       return DropdownMenuItem<int>(
                         value: value,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:traffic_manager/resultPage.dart';
 import 'package:traffic_manager/widget/stopwatch.dart';
+import 'package:vibration/vibration.dart';
 
 class CounterPage extends StatefulWidget {
   int addCard;
@@ -24,9 +25,7 @@ class CounterPage extends StatefulWidget {
 class _CounterPageState extends State<CounterPage> {
   String formattedTime;
   Stopwatch stopwatch = new Stopwatch();
-  String m = "false";
 
-  // bool disabledButton = false;
   void startButtonPressed() {
     setState(() {
       if (stopwatch.isRunning) {
@@ -229,16 +228,19 @@ class _CounterPageState extends State<CounterPage> {
           valueCount: counter[0].toString(),
           labelText: labelTextList[0],
           add: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
             setState(() {
               counter[0]++;
             });
           },
           minus: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
             setState(() {
               counter[0]--;
             });
           },
           reset: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
             setState(() {
               counter[0] = 0;
             });
@@ -248,16 +250,19 @@ class _CounterPageState extends State<CounterPage> {
           valueCount: counter[1].toString(),
           labelText: labelTextList[1],
           add: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
             setState(() {
               counter[1]++;
             });
           },
           minus: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
             setState(() {
               counter[1]--;
             });
           },
           reset: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
             setState(() {
               counter[1] = 0;
             });
@@ -267,16 +272,20 @@ class _CounterPageState extends State<CounterPage> {
           valueCount: counter[2].toString(),
           labelText: labelTextList[2],
           add: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
             setState(() {
               counter[2]++;
             });
           },
           minus: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
             setState(() {
               counter[2]--;
             });
           },
           reset: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
+
             setState(() {
               counter[2] = 0;
             });
@@ -286,16 +295,22 @@ class _CounterPageState extends State<CounterPage> {
           valueCount: counter[3].toString(),
           labelText: labelTextList[3],
           add: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
+
             setState(() {
               counter[3]++;
             });
           },
           minus: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
+
             setState(() {
               counter[3]--;
             });
           },
           reset: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
+
             setState(() {
               counter[3] = 0;
             });
@@ -305,16 +320,22 @@ class _CounterPageState extends State<CounterPage> {
           valueCount: counter[4].toString(),
           labelText: labelTextList[4],
           add: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
+
             setState(() {
               counter[4]++;
             });
           },
           minus: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
+
             setState(() {
               counter[4]--;
             });
           },
           reset: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
+
             setState(() {
               counter[4] = 0;
             });
@@ -325,15 +346,21 @@ class _CounterPageState extends State<CounterPage> {
           labelText: labelTextList[5],
           add: () {
             setState(() {
+              getaran == true ? Vibration.vibrate(duration: 100) : null;
+
               counter[5]++;
             });
           },
           minus: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
+
             setState(() {
               counter[5]--;
             });
           },
           reset: () {
+            getaran == true ? Vibration.vibrate(duration: 100) : null;
+
             setState(() {
               counter[5] = 0;
             });
