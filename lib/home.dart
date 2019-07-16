@@ -9,6 +9,7 @@ class Home extends StatefulWidget {
 }
 
 DateTime _dateTime;
+DateTime _time;
 var date = DateTime.now();
 var month = date.month < 10 ? '0${date.month}' : '${date.month}';
 
@@ -26,10 +27,9 @@ String years = _dateTime != null ? _dateTime.year.toString() : '';
 String months =
     _dateTime != null ? _dateTime.month.toString().padLeft(2, '0') : '';
 String day = _dateTime != null ? _dateTime.day.toString().padLeft(2, '0') : '';
-String hours =
-    _dateTime != null ? _dateTime.hour.toString().padLeft(2, '0') : '';
+String hours = _dateTime != null ? _time.hour.toString().padLeft(2, '0') : '';
 String minutes =
-    _dateTime != null ? _dateTime.minute.toString().padLeft(2, '0') : '';
+    _dateTime != null ? _time.minute.toString().padLeft(2, '0') : '';
 String dateTime = '$day-$month-$years | $hours:$minutes';
 
 class _HomeState extends State<Home> {
@@ -44,6 +44,7 @@ class _HomeState extends State<Home> {
       DeviceOrientation.portraitUp,
     ]);
     _dateTime = DateTime.parse(initDate);
+    _time = DateTime.parse(initTime);
   }
 
   String surveyor, location, condition;
@@ -216,7 +217,7 @@ class _HomeState extends State<Home> {
                           ),
                           onChange: (dateTime, selectedIndex) {
                             setState(() {
-                              _dateTime = dateTime;
+                              _time = dateTime;
                             });
                           },
                         ),
