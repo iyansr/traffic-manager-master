@@ -176,7 +176,7 @@ class _CounterPageState extends State<CounterPage> {
               });
               print(getaran.toString());
             },
-            activeColor: Colors.blue,
+            activeColor: Colors.green,
           ),
         ),
       ],
@@ -200,7 +200,7 @@ class _CounterPageState extends State<CounterPage> {
               });
               print(suara.toString());
             },
-            activeColor: Colors.blue,
+            activeColor: Colors.green,
           ),
         ),
       ],
